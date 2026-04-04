@@ -7,11 +7,13 @@ import tailwindcss from '@tailwindcss/vite';
 import wasm from 'vite-plugin-wasm';
 import topLevelAwait from 'vite-plugin-top-level-await';
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://lu1s9.github.io",
   base: "/webtools",
-  integrations: [react(), sentry()],
+  integrations: [react(), sentry(), sitemap()],
 
   vite: {
     plugins: [tailwindcss(), wasm(), topLevelAwait()],

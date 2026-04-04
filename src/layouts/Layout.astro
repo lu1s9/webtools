@@ -4,10 +4,14 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Developer tools that run entirely in your browser" } = Astro.props;
+const { title, description = "Browser-based developer tools that run entirely on your machine. Convert images, compress audio, and more — 100% client-side.", ogImage } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = `${title} | WebTools`;
+const ogImageURL = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 ---
 
 <html lang="en" class="dark">
@@ -15,8 +19,28 @@ const base = import.meta.env.BASE_URL;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <title>{title} | WebTools</title>
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="WebTools" />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+
+    <!-- Analytics -->
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="5e5ffa6b-f6fc-4f4e-aeea-3f68c1b1a55c"></script>
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
