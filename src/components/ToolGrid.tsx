@@ -7,13 +7,13 @@ const tools = [
   {
     title: "Image Optimizer",
     description: "Convert and compress images. Supports PNG, JPG, WebP, AVIF with adjustable quality.",
-    href: `${base}image`,
+    href: `${base}/image`,
     icon: <ImageIcon className="size-5" />,
   },
   {
     title: "Audio Optimizer",
     description: "Convert and compress audio files. Supports MP3, OGG, AAC, OPUS with bitrate control.",
-    href: `${base}audio`,
+    href: `${base}/audio`,
     icon: <AudioLinesIcon className="size-5" />,
   },
 ];
