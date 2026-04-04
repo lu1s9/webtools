@@ -3,12 +3,28 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import wasm from 'vite-plugin-wasm';
+import topLevelAwait from 'vite-plugin-top-level-await';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss(), wasm(), topLevelAwait()],
+    worker: {
+      format: "es",
+    },
+    optimizeDeps: {
+      exclude: [
+        "@jsquash/png",
+        "@jsquash/jpeg",
+        "@jsquash/webp",
+        "@jsquash/avif",
+        "@jsquash/resize",
+        "@ffmpeg/ffmpeg",
+        "@ffmpeg/util",
+      ],
+    },
+  },
 });

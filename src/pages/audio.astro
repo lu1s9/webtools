@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { AudioOptimizer } from "../components/audio/AudioOptimizer";
 ---
 
 <Layout title="Audio Optimizer">
@@ -10,8 +11,6 @@ import Layout from "../layouts/Layout.astro";
         Convert and compress audio files directly in your browser.
       </p>
     </div>
-    <div class="rounded-lg border border-dashed border-border p-12 text-center text-muted-foreground">
-      Audio optimizer tool — Phase 3
-    </div>
+    <AudioOptimizer client:load />
   </div>
 </Layout>

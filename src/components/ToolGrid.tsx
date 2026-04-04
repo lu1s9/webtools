@@ -12,7 +12,6 @@ const tools = [
     title: "Audio Optimizer",
     description: "Convert and compress audio files. Supports MP3, OGG, AAC, OPUS with bitrate control.",
     href: "/audio",
-    badge: "Coming soon",
     icon: <AudioLinesIcon className="size-5" />,
   },
 ];
