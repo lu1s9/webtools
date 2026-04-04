@@ -1,0 +1,39 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Developer tools that run entirely in your browser" } = Astro.props;
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} | WebTools</title>
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <header class="border-b border-border">
+      <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <a href="/" class="text-lg font-bold tracking-tight">WebTools</a>
+        <div class="flex items-center gap-4 text-sm text-muted-foreground">
+          <a href="/image" class="transition-colors hover:text-foreground">Images</a>
+          <a href="/audio" class="transition-colors hover:text-foreground">Audio</a>
+        </div>
+      </nav>
+    </header>
+    <main class="mx-auto max-w-5xl px-6 py-10">
+      <slot />
+    </main>
+    <footer class="border-t border-border">
+      <div class="mx-auto max-w-5xl px-6 py-6 text-center text-sm text-muted-foreground">
+        100% client-side. Your files never leave your browser.
+      </div>
+    </footer>
+  </body>
+</html>
