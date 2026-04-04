@@ -8,6 +8,8 @@ import topLevelAwait from 'vite-plugin-top-level-await';
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://lu1s9.github.io",
+  base: "/webtools",
   integrations: [react()],
 
   vite: {
